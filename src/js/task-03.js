@@ -20,9 +20,17 @@ galleryEl.setAttribute(
   "list-style: none; display: flex; flex-direction: row-reverse; justify-content: center; aling-items: center; gap: 30px"
 );
 
-const imgItems = images.forEach(({ url, alt }) => {
-  galleryEl.insertAdjacentHTML(
-    "beforeend",
-    `<li><img src ="${url}", alt="${alt}", width = 400px height = 300></li>`
-  );
-});
+// const imgItems = images.forEach(({ url, alt }) => {
+//   galleryEl.insertAdjacentHTML(
+//     "beforeend",
+//     `<li><img src ="${url}", alt="${alt}", width = 400px height = 300></li>`
+//   );
+// });
+
+const imgItems = images
+  .map(
+    (image) =>
+      `<li><img src ="${image.url}", alt="${image.alt}", width = 400px height = 300></li>`
+  )
+  .join("");
+galleryEl.insertAdjacentHTML("beforeend", imgItems);
